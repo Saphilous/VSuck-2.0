@@ -1,0 +1,36 @@
+.NavUl
+{
+    display: flex;
+    justify-content: space-between;
+}
+.NavLi
+{
+    display: inline;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin: 0px;
+    font-weight: 600;
+    padding-right: 5px;
+    font-size: large;
+}
+.NavLi:hover
+{
+    font-weight: 700;
+    border-bottom: 1px black solid;
+    cursor: pointer;
+    color: rgb(68, 0, 255);
+}
+.Navbar
+{
+    color: black;
+    background-color: rgba(255, 230, 0, 0.5);
+    height: 55px;
+    position: fixed;
+    top: 0;
+    left: 0px;
+    width: 100%;
+}
+.Navbar:hover
+{
+    background-color: rgba(255, 230, 0, 1);
+}
