@@ -1,0 +1,11 @@
+.DashboardDiv
+{
+    background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+.ClassHolder
+{
+    padding-top: 3%;
+}

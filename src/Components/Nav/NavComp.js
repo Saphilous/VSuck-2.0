@@ -1,21 +1,22 @@
 import React from 'react'
 import '../../CSS/NavComp.css'
+import {NavLink} from 'react-router-dom'
 
 const navcomp = () => {
     return(
     <ul className='NavUl'>
-        <li className = 'NavLi'>
+        <NavLink to="/" className= 'Navli' activeClassName="selected">
             VSuck
-        </li>
-        <li className = 'NavLi'>
-            Login
-        </li>
-        <li className = 'NavLi'>
-            Signup
-        </li>
-        <li className = 'NavLi'>
+        </NavLink>
+        <NavLink to="/Dashboard" className= 'Navli' activeClassName="selected">
             Dashboard
-        </li>
+        </NavLink>
+        <NavLink to="#" className= 'Navli' activeClassName="selected">
+            Community
+        </NavLink>
+        <NavLink to="#" className= 'Navli'  activeClassName="selected">
+            Login/Singup
+        </NavLink>
     </ul>
     )
 

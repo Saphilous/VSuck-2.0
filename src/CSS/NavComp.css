@@ -3,7 +3,7 @@
     display: flex;
     justify-content: space-between;
 }
-.NavLi
+.Navli
 {
     display: inline;
     margin-left: 10px;
@@ -12,8 +12,10 @@
     font-weight: 600;
     padding-right: 5px;
     font-size: large;
+    text-decoration: none;
+    color: black;
 }
-.NavLi:hover
+.Navli:hover
 {
     font-weight: 700;
     border-bottom: 1px black solid;

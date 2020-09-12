@@ -1,13 +1,18 @@
 import React, {Component} from 'react';
-import ClassComp from '../Components/Dash/classcomp'
+import ClassComp from '../Components/Dash/classcomp';
+import NavBar from './NavCont';
+import '../CSS/Dashboard.css'
 
 class DashBoard extends Component
 {
     render()
     {
         return (
-            <div>
-                <ClassComp />
+            <div className='DashboardDiv'>
+                <NavBar />
+                <div className= 'ClassHolder'>
+                    <ClassComp />
+                </div>
             </div>
         )
     }
