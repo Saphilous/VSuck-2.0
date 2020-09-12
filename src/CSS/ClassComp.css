@@ -1,0 +1,46 @@
+.ClassCardGrid
+{
+    display: inline-block;
+}
+.ClassCard
+{
+    background-color: rgb(37, 37, 37);
+    color: rgb(25, 228, 228);
+    height: auto;
+    width: 25%;
+    margin-left: 7%;
+    border-radius: 7px;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.ClassCardHead
+{
+    text-align: center;
+}
+.ClassCardHr
+{
+    color: white;
+    width: 92%;
+}
+.ClassCardP
+{
+    font-weight: bold;
+    padding-right: 10px;
+}
+.ClsBtnDiv
+{
+    text-align: center;
+    padding-bottom: 10px;
+}
+.ClassButton
+{
+    text-align: center;
+    font-size: larger;
+    border-radius: 7px;
+}
+.ClassButton:hover
+{
+    cursor: pointer;
+    background-color: rgb(25, 228, 228);
+    color: rgb(37, 37, 37);
+}
