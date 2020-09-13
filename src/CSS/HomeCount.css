@@ -13,6 +13,7 @@ body
     display: flexbox;
     border-radius: 7px;
     margin-top: 5%;
+    margin-bottom: 3%;
 }
 .HomeHead
 {
@@ -55,6 +56,19 @@ body
     text-align: center;
     margin-left: 40%;
     border-radius: 7px;
+}
+.Getstartedlink1
+{
+    text-decoration: none;
+    color: rgb(255, 230, 0);
+    text-align: center;
+    margin-left: 45%;
+    border: 1px solid cornflowerblue;
+    width: 90px;
+    background-color: rgba(0, 0, 0, 0.95);
+    border-radius: 7px;
+    padding: 15px;
+    margin-top: 15%;
 }
 .HomeCard1
 {
@@ -110,7 +124,12 @@ body
 }
 .StartButton:hover {
     color: black;
-    background-color:  rgb(255, 230, 0);
+    background-color: rebeccapurple;
     cursor: pointer;
     border-radius: 7px;
+}
+.Getstartedlink1:hover
+{
+    background-color: rgb(255, 230, 0);
+    color: black;
 }

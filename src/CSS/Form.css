@@ -1,0 +1,58 @@
+.FormDiv
+{
+    display: flexbox;
+    text-align: center;
+    align-content: center;
+    margin-top: 15%;
+}
+.FormInput1
+{
+    width: 20%;
+    height: 30px;
+    border: 1.5px solid black;
+    border-radius: 7px;
+    padding-left: 15px;
+}
+.Submitbtn
+{
+    width: 10%;
+    height: 30px;
+    border-radius: 7px;
+    border: cornflowerblue 1px solid;
+    margin-top: 1%;
+    font-size: larger;
+    margin-right: 1%;
+    font-weight: 600;
+}
+.SignupLink
+{
+    padding-left: 1%;
+    padding-right: 1%;
+    padding-top: 0.15%;
+    padding-bottom: 0.15%;
+    height: 30px;
+    border-radius: 7px;
+    border: cornflowerblue 1px solid;
+    margin-top: 1%;
+    font-size: larger;
+    margin-right: 1%;
+    text-decoration: none;
+    background-color: white;
+    color: black;
+    font-weight: 600;
+    text-align: center;
+}
+.Submitbtn:hover
+{
+    cursor: pointer;
+    font-weight: 700;
+    background-color: green;
+    color: white;
+
+}
+.SignupLink:hover
+{
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}

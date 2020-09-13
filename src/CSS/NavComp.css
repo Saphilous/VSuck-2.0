@@ -32,6 +32,16 @@
     left: 0px;
     width: 100%;
 }
+.selected
+{
+    font-weight: 800;
+}
+.selected:hover
+{
+    font-weight: 800;
+    color: black;
+    border: 0px;
+}
 .Navbar:hover
 {
     background-color: rgba(255, 230, 0, 1);

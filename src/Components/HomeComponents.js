@@ -1,4 +1,5 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 import '../CSS/HomeCount.css'
 
 const homecont = (props) =>
@@ -19,9 +20,7 @@ const homecont = (props) =>
                     </h3>
                 </div>
                 <div>
-                <button className = 'StartButton'>
-                        <h2>Get Started</h2>
-                </button>
+                        <h2><NavLink className= 'Getstartedlink1' to='/Login'>Get Started</NavLink></h2>
                 </div>
                 <div className = 'HomeCard1'>
                     <h1 className = 'CardTit'>

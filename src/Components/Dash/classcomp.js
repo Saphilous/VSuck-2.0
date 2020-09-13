@@ -1,7 +1,6 @@
-import { render } from '@testing-library/react';
 import React, {PureComponent} from 'react'
 import {
-    BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
+    BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import '../../CSS/ClassComp.css'
 
 //Static Data to be removed later
