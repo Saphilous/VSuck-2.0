@@ -9,7 +9,7 @@ class DashBoard extends Component
     {
         return (
             <div className='DashboardDiv'>
-                <NavBar />
+                <NavBar  />
                 <div className= 'ClassHolder'>
                     <ClassComp />
                 </div>

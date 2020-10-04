@@ -8,7 +8,7 @@ class NavCont extends Component {
         return (
 
             <div className='Navbar'>
-                <NavComp />
+                <NavComp authstate={this.props.authstate} />
             </div>
 
         )

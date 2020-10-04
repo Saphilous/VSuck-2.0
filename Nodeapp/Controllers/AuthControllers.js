@@ -9,7 +9,7 @@ exports.getlogin = (req, res, next) =>
     res.send('Yeas')
 }
 
-exports.postlogin = (req,res,next) =>{
+exports.postlogin = async (req,res,next) =>{
     console.log(req.body)
     const { mail, pwd} = req.body.details
     console.log(mail)
@@ -22,7 +22,30 @@ exports.postlogin = (req,res,next) =>{
            return  res.status(200).send("user not found")
         }
         else{
-            bcrypt.compare(pwd,user.password,(err,result)=>{
+            let passwordvalid = false
+                try{
+                    passwordvalid = bcrypt.compare(pwd,user.password)
+                } catch(err)
+                {
+                    console.log(err)
+                    console.log('Ckeck again you Whoosher!')
+                }
+
+                if(!passwordvalid)
+                {
+                    console.log('U entered da wrong credintials idiot!')
+                }
+                else
+                {
+                    console.log("Suk u! Come on in!")
+                    const payload = mail
+                    const token = jwt.sign(payload, secret)
+                    console.log(token)
+                    res.cookie('SesToken', token, {httponly:true}).sendStatus(200)
+                    console.log('cookie set succesfully')
+                }
+
+          /* await bcrypt.compare(pwd,user.password,(err,result)=>{
                 if(err)
                 {
                     console.log(user.password)
@@ -38,7 +61,7 @@ exports.postlogin = (req,res,next) =>{
                     res.cookie('SesToken', token, {httponly:true}).sendStatus(200)
                     console.log('cookie set succesfully')
                 }
-            })    
+            })  */  
         }
     })
 }

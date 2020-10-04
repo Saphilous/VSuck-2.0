@@ -24,28 +24,16 @@ class Form extends Component
         this.setState({password: newpawd})
     }
 
-    onSubmit = async ()=>
+    onSubmit = async (event)=>
     {
-       const details = {mail: this.state.mail, pwd: this.state.password}
-
-         instance.post('/login', {details}).then((res) =>
-            {
-                if(res.status === 200)
-                {
-                    this.setState({Auth: true})
-                    this.props.history.push('/Dashboard')
-                }
-                else
-                {
-                    console.log('Error Lol!!!!!!!!!!!!11')
-                    this.props.history.push('/')
-                }
-            }).catch(err =>
-                {
-                    console.error(err)
-                    alert('Error Logging In! Shut Up and Try Again!!!!')
-                }
-            )
+        event.preventDefault()
+        const details = {mail: this.state.mail, pwd: this.state.password}
+        console.log(details + 'This is working so far')
+        const response = await instance.post('/login', {details})
+        console.log('Not working from here')
+        console.log(response)
+        this.setState({Auth: true})
+        this.props.history.push('/')
     }
 
     render()
@@ -55,7 +43,7 @@ class Form extends Component
         {
             return(
                 <div>
-                    <Navbar />
+                    <Navbar authstate = {this.state.Auth}/>
                     <FormComp onSubmit= {this.onSubmit} mailchanged= {this.MailChanged} pwdchanged= {this.PassChanged}/>
                 </div>
             )

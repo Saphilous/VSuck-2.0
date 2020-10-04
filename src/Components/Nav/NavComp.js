@@ -2,7 +2,8 @@ import React from 'react'
 import '../../CSS/NavComp.css'
 import {NavLink} from 'react-router-dom'
 
-const navcomp = () => {
+const navcomp = (props) => {
+    const authstate = props.authstate
     return(
     <ul className='NavUl'>
         <NavLink to="/" className= 'Navli' activeClassName="selected" exact>
@@ -14,9 +15,11 @@ const navcomp = () => {
         <NavLink to="/Community" className= 'Navli' activeClassName="selected" exact>
             Community
         </NavLink>
-        <NavLink to="Login" className= 'Navli'  activeClassName="selected" exact> 
+        {authstate ? <NavLink to="Logout" className= 'Navli'  activeClassName="selected" exact> 
+            Logout
+        </NavLink> : <NavLink to="Login" className= 'Navli'  activeClassName="selected" exact> 
             Login/Singup
-        </NavLink>
+        </NavLink>}
     </ul>
     )
 
