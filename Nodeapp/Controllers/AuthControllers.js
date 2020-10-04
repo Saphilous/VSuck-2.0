@@ -10,7 +10,10 @@ exports.getlogin = (req, res, next) =>
 }
 
 exports.postlogin = (req,res,next) =>{
-    const { mail, pwd} = req.body
+    console.log(req.body)
+    const { mail, pwd} = req.body.details
+    console.log(mail)
+    console.log(pwd)
     User.findOne({
         mailid: mail
     }).then((user)=>{
@@ -20,16 +23,18 @@ exports.postlogin = (req,res,next) =>{
         }
         else{
             bcrypt.compare(pwd,user.password,(err,result)=>{
-                if(err){
+                if(err)
+                {
                     console.log(user.password)
-                    console.log(pwd)
                     console.log("No passy passy!")
-                    return res.status(401).send("incorrect password")
+                    return res.sendStatus(401).send("incorrect password")
                 }
-                else{
+                else
+                {
                     console.log("Suk u! Come on in!")
                     const payload = mail
                     const token = jwt.sign(payload, secret)
+                    console.log(token)
                     res.cookie('SesToken', token, {httponly:true}).sendStatus(200)
                     console.log('cookie set succesfully')
                 }
@@ -40,6 +45,7 @@ exports.postlogin = (req,res,next) =>{
 
 exports.postsignup = (req, res, next) =>
 {
+    console.log('line 43 says hi-------------------------------------------------------------------------------')
     console.log(req.body)
     const {name, mail, password} = req.body
     if(mail && password && name )

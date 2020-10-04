@@ -34,11 +34,12 @@ class SigForm extends Component
         const details = {name: this.state.name, mail: this.state.mail, password: this.state.password}
         instance.post('/signup', details).then((response) =>
             {
+                console.log('Hooooola Hoops')
                 this.setState({name:null, password:null, mail:null}).catch(err =>
                     {
                         console.log(err)
                     })
-                    this.props.history.push('./')
+                    this.props.history.push('/Login')
             })
     }
 

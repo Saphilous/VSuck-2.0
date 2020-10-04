@@ -10,15 +10,15 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom'
 function App() {
   return (
     <BrowserRouter>
-      <div className="App">
-          <Switch>
-            <Route path='/' component= {HomeContainer} exact />
-            <Route path='/Dashboard' component= {DashBoardContainer} exact />
-            <Route path='/Login' component = {FormContainer} exact />
-            <Route path='/Signup' component = {Sigform} exact />
-            <Route path='/Community' component = {Community} exact />
-          </Switch>
-      </div>
+        <div className="App">
+            <Switch>
+              <Route path='/' component= {HomeContainer} exact />
+              <Route path='/Dashboard' component= {DashBoardContainer} exact />
+              <Route path='/Login' component = {FormContainer} exact />
+              <Route path='/Signup' component = {Sigform} exact />
+              <Route path='/Community' component = {Community} exact />
+            </Switch>
+        </div>
     </BrowserRouter>
   );
 }

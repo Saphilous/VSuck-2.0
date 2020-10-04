@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const port = process.env.PORT || 5000
 const cookieparser = require('cookie-parser')
 
-mongoose.connect('mongodb+srv://Saphilous:jaffareddy@cluster0.8dzmt.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser:true, useUnifiedTopology: true, useFindAndModify:false})
+mongoose.connect('mongodb+srv://Saphilous:jaffareddy@cluster0.8dzmt.gcp.mongodb.net/mydb1?retryWrites=true&w=majority', {useNewUrlParser:true, useUnifiedTopology: true, useFindAndModify:false})
 .catch((err) =>
 {
     if(err)
@@ -23,10 +23,10 @@ mongoose.connect('mongodb+srv://Saphilous:jaffareddy@cluster0.8dzmt.mongodb.net/
 const miscpages=require('./Routes/MiscRoutes')
 const authpages = require('./Routes/Authroutes')
 app.use(bodyparser.json())
-app.use(cookieparser)
 app.use(cors())
 app.use(authpages)
 app.use(miscpages)
+app.use(cookieparser)
 app.listen(port, () => console.log( "It is a me ! DEO"))
 console.log(mongoose.connection.readyState)
 setInterval(function(){console.log(mongoose.connection.readyState)}, 100000)
