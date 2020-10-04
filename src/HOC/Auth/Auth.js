@@ -1,17 +1,49 @@
 import React, {Component} from 'react'
+import {Redirect} from 'react-router-dom'
+import instance from '../../Axios/axios'
 
-class Auth extends Component
+export default function withAuth (ComponenttoProtect)
 {
-    state = {
-        AUTH_STATE: false
-    }
-
-    render()
+    return class extends Component
     {
-        return(
-            <h1>
-                Henlo Frens
-            </h1>
-        )
+        state = {
+            loading: true,
+            redirect: false
+        }
+
+        componentDidMount()
+        {
+            instance.get('/checktoken').then( res =>
+                {
+                    if(res.status === 200)
+                    {
+                        this.setState({loading:false})
+                    }
+                    else
+                    {
+                        console.log('There is an error processing check line 24 Auth.js')
+                    }
+                }
+            ).catch(err =>
+                {
+                    console.log(err)
+                    this.setState({loading: false, redirect: true})
+                })
+        }
+        render()
+        {
+            const {loading, redirect} = this.state
+            if(loading)
+            {
+                return(null)
+            }
+            if(redirect)
+            {
+                return(
+                    <Redirect to = '/Login' />
+                )
+            }
+            return( <ComponenttoProtect {...this.props} />)
+        }
     }
 }
