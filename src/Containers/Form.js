@@ -27,8 +27,8 @@ class Form extends Component
     onSubmit = async ()=>
     {
        const details = {mail: this.state.mail, pwd: this.state.password}
-       return await(
-          instance.post('/login', {details}).then((res) =>
+
+         instance.post('/login', {details}).then((res) =>
             {
                 if(res.status === 200)
                 {
@@ -46,7 +46,6 @@ class Form extends Component
                     alert('Error Logging In! Shut Up and Try Again!!!!')
                 }
             )
-        )
     }
 
     render()
