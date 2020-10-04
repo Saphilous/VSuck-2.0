@@ -37,7 +37,7 @@ exports.postlogin = async (req,res,next) =>{
                 }
                 else
                 {
-                    console.log("Suk u! Come on in!")
+                    console.log("Fuk u! Come on in!")
                     const payload = mail
                     const token = jwt.sign(payload, secret)
                     console.log(token)

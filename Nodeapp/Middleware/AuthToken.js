@@ -4,8 +4,8 @@ const secret = 'ManiPedifor5183$*'
 
 const withAuth = (req, res, next) =>
 {
-    const token = req.cookies.SesToken
-    if(token)
+    const token = req.cookies
+    if(!token)
     {
         res.status(401).send('Unauthoerized')
     }
