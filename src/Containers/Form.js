@@ -7,15 +7,14 @@ import instance from '../Axios/axios'
 class Form extends Component
 {
     state = {
-        name: null,
         mail: null,
-        password: null
+        password: null,
     }
 
-    NameChanged = (event) =>
+    MailChanged = (event) =>
     {
-        const newname = event.target.value    
-        this.setState({name:newname})
+        const newmail = event.target.value    
+        this.setState({mail:newmail})
 
     }
     PassChanged = (event) =>
@@ -24,18 +23,25 @@ class Form extends Component
         this.setState({password: newpawd})
     }
 
-    onSubmit = () =>
+    onSubmit = ()=>
     {
-       const details = {name: this.state.name, pwd: this.state.password}
-       instance.post('/login', details).then((response) =>
+       const details = {mail: this.state.mail, pwd: this.state.password}
+       instance.post('/login', details).then((res) =>
         {
-            console.log(response.data)
-            this.setState({name: null, password: null}).catch(err =>
-                {
-                    console.log(err)
-                })
+            if(res.status === 200)
+            {
                 this.props.history.push('/')
-        })
+            }
+            else
+            {
+                console.log('Error Lol!!!!!!!!!!!!11')
+                this.props.history.push('/login')
+            }
+        }).catch(err =>
+            {
+                console.error(err)
+                alert('Error Logging In! Shut Up and Try Again!!!!')
+            })
     }
 
     render()
@@ -43,7 +49,7 @@ class Form extends Component
         return(
             <div>
                 <Navbar />
-                <FormComp onSubmit= {this.onSubmit} namechanged= {this.NameChanged} pwdchanged= {this.PassChanged}/>
+                <FormComp onSubmit= {this.onSubmit} mailchanged= {this.MailChanged} pwdchanged= {this.PassChanged}/>
             </div>
 
         )

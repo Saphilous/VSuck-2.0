@@ -11,20 +11,20 @@ const sigformcomp = (props) =>
                 <h1>
                     Mail ID
                 </h1>
-                <input className= 'FormInput1' type='text' placeholder = 'Enter Your mail id' autoComplete = 'off'/>
+                <input className= 'FormInput1' name= 'mail' onChange= {props.mailch} type='text' placeholder = 'Enter Your mail id' autoComplete = 'off'/>
                 <br />
                 <h1>
                     Password
                 </h1>
-                <input className='FormInput1' type='password' placeholder = 'Enter your secure password' autoComplete = 'off' value='password'/>
+                <input className='FormInput1' name= 'pwd' onChange= {props.pwdch} type='password' placeholder = 'Enter a secure password' autoComplete = 'off'/>
                 <br />
                 <h1>
                     Full Name
                 </h1>
-                <input className='FormInput1' type='text' placeholder = 'Enter your full name' autoComplete = 'off'/>
+                <input className='FormInput1' name= 'fname' onChange= {props.namech} type='text' placeholder = 'Enter your full name' autoComplete = 'off'/>
                 <br />
                 <NavLink className='SignupLink' to='/Login'>Login</NavLink>
-                <input className='Submitbtn' type= 'submit' value='Register'/>
+                <button className='Submitbtn' onClick= {props.onRegister}>Register</button>
             </form>
         </div>
     )

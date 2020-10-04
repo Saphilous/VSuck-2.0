@@ -10,7 +10,7 @@ const formcomp = (props) =>
                 <h1>
                     Mail ID
                 </h1>
-                <input className= 'FormInput1' onChange= {props.namechanged} name= 'Mail' type='text' placeholder = 'Enter Your mail id' autoComplete = 'off'/>
+                <input className= 'FormInput1' onChange= {props.mailchanged} name= 'Mail' type='text' placeholder = 'Enter Your mail id' autoComplete = 'off'/>
                 <br />
                 <h1>
                     Password
