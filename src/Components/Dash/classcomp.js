@@ -1,5 +1,4 @@
 import React, {PureComponent} from 'react'
-import instance from '../../Axios/axios'
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import '../../CSS/ClassComp.css'
@@ -74,7 +73,7 @@ class ClassComp extends PureComponent
                         </div>
                         <hr className = 'ClassCardHr' />
                         <div className = 'ClsBtnDiv'>
-                        <button className= 'ClassButton' onClick = {this.props.ClassboardClicked}>
+                        <button className= 'ClassButton' value={classes._id} onClick = {this.props.ClassboardClicked}>
                             Class Board
                         </button>
                         </div>

@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import ClassComp from '../Components/ClassComp'
+import ClassComp from '../Components/SingleClass'
 import instance from '../Axios/axios'
 
 class ClassContainer extends Component

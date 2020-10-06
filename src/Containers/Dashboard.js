@@ -27,9 +27,13 @@ class DashBoard extends Component
                 })
             })
     }
-    ClassboardClicked = () =>
+    ClassboardClicked = (event) =>
     {
-        this.props.history.push('/Dashboard/Classid')
+        console.log(event.target.value)
+        const linkurl = event.target.value
+        const linkbase = '/Dashboard/'
+        const link = linkbase.concat(linkurl)
+        this.props.history.push(link)
     }
 
     render()
