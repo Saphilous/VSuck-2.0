@@ -66,7 +66,7 @@ class ClassComp extends PureComponent
                             Astronomy 101
                         </h2>
                         <hr className = 'ClassCardHr' />
-                        <p className = 'ClassCardP'>
+                        <div className = 'ClassCardP'>
                             <ul>
                                 <li>
                                     Class Teacher: Suckson Pantye 
@@ -78,10 +78,10 @@ class ClassComp extends PureComponent
                                     Description: Astronomy 101 teaches the basics of space exploration to all the aspiring astronauts.
                                 </li>
                             </ul>
-                        </p>
+                        </div>
                         <hr className = 'ClassCardHr' />
                         <div className = 'ClsBtnDiv'>
-                        <button className= 'ClassButton'>
+                        <button className= 'ClassButton' onClick = {this.props.ClassboardClicked}>
                             Class Board
                         </button>
                         </div>

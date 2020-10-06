@@ -4,10 +4,12 @@ const secret = 'ManiPedifor5183$*'
 
 const withAuth = (req, res, next) =>
 {
-    const token = req.cookies
+    const tok = req.headers.cookie
+    const tokensplitted = tok.split("=")
+    const token = tokensplitted[1]
     if(!token)
     {
-        res.status(401).send('Unauthoerized')
+        res.status(401).send('Unauthorized')
     }
     else
     {

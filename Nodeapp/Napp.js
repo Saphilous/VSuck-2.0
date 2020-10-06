@@ -29,5 +29,5 @@ app.use(miscpages)
 app.use(cookieparser())
 app.listen(port, () => console.log( "It is a me ! DEO"))
 console.log(mongoose.connection.readyState)
-setInterval(function(){console.log(mongoose.connection.readyState)}, 10000)
+setInterval(function(){console.log(mongoose.connection.readyState)}, 1000000)
 //C:\Program Files\MongoDB\Server\4.2\bin

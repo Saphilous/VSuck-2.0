@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import Navbar from './NavCont'
 
 class Community extends Component
 {
@@ -8,9 +9,12 @@ class Community extends Component
     render()
     {
         return(
-            <h1>
-                'Foo Fighters' {this.state.message}
-            </h1>
+            <React.Fragment>
+                <Navbar authstate={true}/>
+                <h1>
+                    Coming Soon {this.state.message}
+                </h1>
+            </React.Fragment>
         )
     }
 }

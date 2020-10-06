@@ -13,7 +13,7 @@ export default function withAuth (ComponenttoProtect)
 
         componentDidMount()
         {
-            instance.get('/checktoken').then( res =>
+            instance.get('/checktoken', {withCredentials: true}).then( res =>
                 {
                     if(res.status === 200)
                     {
@@ -26,7 +26,7 @@ export default function withAuth (ComponenttoProtect)
                 }
             ).catch(err =>
                 {
-                    console.log(err)
+                    console.log(err + 'Line 29 mate!')
                     this.setState({loading: false, redirect: true})
                 })
         }

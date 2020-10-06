@@ -4,9 +4,11 @@ import HomeContainer from './Containers/HomeCont';
 import DashBoardContainer from './Containers/Dashboard';
 import FormContainer from './Containers/Form';
 import Sigform from './Containers/SignupForm';
+import Logout from './Containers/Logout';
 import Community from './Containers/Community';
-import withAuth from './HOC/Auth/Auth'
-import {BrowserRouter, Route, Switch} from 'react-router-dom'
+import Classes from './Containers/ClassContainer';
+import withAuth from './HOC/Auth/Auth';
+import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 function App() {
   return (
@@ -17,7 +19,9 @@ function App() {
               <Route path='/Dashboard' component= {withAuth(DashBoardContainer)} exact />
               <Route path='/Login' component = {FormContainer} exact />
               <Route path='/Signup' component = {Sigform} exact />
+              <Route path ='/Logout' component = {Logout} exact />
               <Route path='/Community' component = {withAuth(Community)} exact />
+              <Route path = '/Dashboard/Classid' component = {withAuth(Classes)} />
             </Switch>
         </div>
     </BrowserRouter>

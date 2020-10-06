@@ -11,7 +11,7 @@ const homecont = (props) =>
                         Welcome to VSuck
                     </h1>
                     <h2 className='HomeSub'>
-                        We Suck, You Suck, They Suck
+                        Quizzes, Records, and everything your dog needs
                     </h2>
                     <hr className = 'CardBr'>
                     </hr>
