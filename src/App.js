@@ -21,7 +21,7 @@ function App() {
               <Route path='/Signup' component = {Sigform} exact />
               <Route path ='/Logout' component = {Logout} exact />
               <Route path='/Community' component = {withAuth(Community)} exact />
-              <Route path = '/Dashboard/Classid' component = {withAuth(Classes)} />
+              <Route path = '/Dashboard/:id' component = {withAuth(Classes)} />
             </Switch>
         </div>
     </BrowserRouter>

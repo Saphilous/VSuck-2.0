@@ -32,14 +32,15 @@ exports.postClasses = (req, res, next) =>
 }
 exports.getclasswithid = (req, res, next) =>
 {
-    const classid= req.body
+    const classid= req.params.id
+    console.log(classid)
     Class.findById(classid).then(foundclass =>
         {
             console.log(foundclass)
             res.status(200).send(foundclass)
         }).catch(err =>
             {
-                console.log('You fucked up roaylly again! line 39 of ClassController')
+                console.log('You fucked up roaylly again! line 42 of ClassController')
                 res.status(404).send('No such resource exxist! Put your glasses on and see it proprely you NARC!')
             })
 }

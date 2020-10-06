@@ -1,40 +1,37 @@
 import React, {Component} from 'react'
-import ClassComp from '../Components/SingleClass'
+import SingleClassComp from '../Components/SingleClass'
+import Navbar from '../Containers/NavCont'
 import instance from '../Axios/axios'
+import { withRouter } from 'react-router-dom'
 
 class ClassContainer extends Component
 {
-    state= {
-        classlist: []
+    state = {
+        singleclass : {}
     }
-
     componentDidMount()
     {
-        instance.get('/classes').then(res =>
-            {
-                const classdata = []
-                for (let key in res.data)
-                {
-                    classdata.push({
-                        ...res.data[key],
-                        id: key
-                    })
-                }
-                this.setState({
-                    classlist:classdata
-                })
-            })
+        let iD = this.props.match.params.id
+        console.log(iD)
+        const Baselink = '/classes/'
+        const actlink = Baselink.concat(iD)
+        instance.get(actlink).then(res =>
+        {
+            console.log(res.data)
+            this.setState({singleclass: res.data})
+        })
     }
     render()
     {
-        const classestopass = this.state.classlist
-        console.log(classestopass)
+        const singleclasspassing = this.state.singleclass
+        console.log(this.state.singleclass)
         return(
             <React.Fragment>
-                <ClassComp classesdata = {classestopass}/>
+                <Navbar />
+                <SingleClassComp singleclasspassed ={singleclasspassing}/>
             </React.Fragment>
         )
     }
 }
 
-export default ClassContainer
+export default withRouter(ClassContainer)

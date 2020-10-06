@@ -26,7 +26,7 @@ class Home extends Component {
     render () {
 
         return (
-            <div>
+            <div className='HomeDiv'>
                 <NavCont authstate= {this.state.AUTH}/>
                 <HomeComp />
             </div>  
