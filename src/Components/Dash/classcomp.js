@@ -1,4 +1,5 @@
 import React, {PureComponent} from 'react'
+import instance from '../../Axios/axios'
 import {
     BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis} from 'recharts';
 import '../../CSS/ClassComp.css'
@@ -55,27 +56,19 @@ const data = [
 class ClassComp extends PureComponent
 {
     render(){
-        return(
-            <div>
-                <div className= 'ClassCardGrid'>
-                    <h1 className='dashTitle'>
-                        Course List
-                    </h1>
+        console.log(this.props.classesdata)
+        const classesmapped = this.props.classesdata.map(classes =>
+            {
+                return(
                     <div className= 'ClassCard'>
                         <h2 className = 'ClassCardHead'>
-                            Astronomy 101
+                           {classes.ClassName}
                         </h2>
                         <hr className = 'ClassCardHr' />
                         <div className = 'ClassCardP'>
                             <ul>
                                 <li>
-                                    Class Teacher: Suckson Pantye 
-                                </li>
-                                <li>
-                                    Total Hours: 42  
-                                </li>
-                                <li>
-                                    Description: Astronomy 101 teaches the basics of space exploration to all the aspiring astronauts.
+                                    Description: {classes.ClassDescription}
                                 </li>
                             </ul>
                         </div>
@@ -86,131 +79,15 @@ class ClassComp extends PureComponent
                         </button>
                         </div>
                     </div>
-                    <div className= 'ClassCard'>
-                        <h2 className = 'ClassCardHead'>
-                            Biology 101
-                        </h2>
-                        <hr className = 'ClassCardHr' />
-                        <p className = 'ClassCardP'>
-                            <ul>
-                                <li>
-                                    Class Teacher: Suckson Pantye 
-                                </li>
-                                <li>
-                                    Total Hours: 42  
-                                </li>
-                                <li>
-                                    Description: Astronomy 101 teaches the basics of space exploration to all the aspiring astronauts.
-                                </li>
-                            </ul>
-                        </p>
-                        <hr className = 'ClassCardHr' />
-                        <div className = 'ClsBtnDiv'>
-                        <button className= 'ClassButton'>
-                            Class Board
-                        </button>
-                        </div>
-                    </div>
-                    <div className= 'ClassCard'>
-                        <h2 className = 'ClassCardHead'>
-                            Philosophy 101
-                        </h2>
-                        <hr className = 'ClassCardHr' />
-                        <p className = 'ClassCardP'>
-                            <ul>
-                                <li>
-                                    Class Teacher: Suckson Pantye 
-                                </li>
-                                <li>
-                                    Total Hours: 42  
-                                </li>
-                                <li>
-                                    Description: Astronomy 101 teaches the basics of space exploration to all the aspiring astronauts.
-                                </li>
-                            </ul>
-                        </p>
-                        <hr className = 'ClassCardHr' />
-                        <div className = 'ClsBtnDiv'>
-                        <button className= 'ClassButton'>
-                            Class Board
-                        </button>
-                        </div>
-                    </div>
-                    <div className= 'ClassCard'>
-                        <h2 className = 'ClassCardHead'>
-                            CyberSecurity 101
-                        </h2>
-                        <hr className = 'ClassCardHr' />
-                        <p className = 'ClassCardP'>
-                            <ul>
-                                <li>
-                                    Class Teacher: Suckson Pantye 
-                                </li>
-                                <li>
-                                    Total Hours: 42  
-                                </li>
-                                <li>
-                                    Description: Astronomy 101 teaches the basics of space exploration to all the aspiring astronauts.
-                                </li>
-                            </ul>
-                        </p>
-                        <hr className = 'ClassCardHr' />
-                        <div className = 'ClsBtnDiv'>
-                        <button className= 'ClassButton'>
-                            Class Board
-                        </button>
-                        </div>
-                    </div>
-                    <div className= 'ClassCard'>
-                        <h2 className = 'ClassCardHead'>
-                            Social Psychology 101
-                        </h2>
-                        <hr className = 'ClassCardHr' />
-                        <p className = 'ClassCardP'>
-                            <ul>
-                                <li>
-                                    Class Teacher: Suckson Pantye 
-                                </li>
-                                <li>
-                                    Total Hours: 42  
-                                </li>
-                                <li>
-                                    Description: Astronomy 101 teaches the basics of space exploration to all the aspiring astronauts.
-                                </li>
-                            </ul>
-                        </p>
-                        <hr className = 'ClassCardHr' />
-                        <div className = 'ClsBtnDiv'>
-                        <button className= 'ClassButton'>
-                            Class Board
-                        </button>
-                        </div>
-                    </div>
-                    <div className= 'ClassCard'>
-                        <h2 className = 'ClassCardHead'>
-                            Sex Ed 101
-                        </h2>
-                        <hr className = 'ClassCardHr' />
-                        <p className = 'ClassCardP'>
-                            <ul>
-                                <li>
-                                    Class Teacher: Suckson Pantye 
-                                </li>
-                                <li>
-                                    Total Hours: 42  
-                                </li>
-                                <li>
-                                    Description: Astronomy 101 teaches the basics of space exploration to all the aspiring astronauts.
-                                </li>
-                            </ul>
-                        </p>
-                        <hr className = 'ClassCardHr' />
-                        <div className = 'ClsBtnDiv'>
-                        <button className= 'ClassButton'>
-                            Class Board
-                        </button>
-                        </div>
-                    </div>
+                )
+            })
+        return(
+            <div>
+                 <div className= 'ClassCardGrid'>
+                    <h1 className='dashTitle'>
+                        Course List
+                    </h1>
+                    {classesmapped}
                 </div>
                 <hr className='ChartBegin' />
                 <h1 className= 'CharTit'>
