@@ -27,7 +27,7 @@ class ClassContainer extends Component
         console.log(this.state.singleclass)
         return(
             <React.Fragment>
-                <Navbar />
+                <Navbar authstate = {true}/>
                 <SingleClassComp singleclasspassed ={singleclasspassing}/>
             </React.Fragment>
         )
