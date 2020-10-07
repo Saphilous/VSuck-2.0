@@ -11,7 +11,8 @@ const ClassSchema = new mongoose.Schema(
             required: true
         },
         ClassQuizzes: {
-            type: String
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Quiz'
         },
         ClassAssignements: {
             type: String
