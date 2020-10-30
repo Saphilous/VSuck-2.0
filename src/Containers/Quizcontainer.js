@@ -22,11 +22,15 @@ class QuizContainer extends Component{
     }
     render()
     {
+        const formsubmitted = (event) =>
+        {
+            event.preventDefault()
+        }
         console.log(this.state.foundquiz)
         return(
             <div className='MainQuizDiv'>
                 <Navbar authstate= {true}/>
-                <QuizComp passingquiz = {this.state.foundquiz} />
+                <QuizComp passingquiz = {this.state.foundquiz} formsubmitted={formsubmitted} />
             </div>
         )
     }

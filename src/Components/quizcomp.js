@@ -22,30 +22,35 @@ const quizcomp = (props) =>
             let j =0
             let anaswersforquestion = null
 
-           anaswersforquestion= questions.answers.map(answers =>
+           anaswersforquestion= questions.answers.map(answer =>
                 {
                     j +=1
+                    const optionname = 'option' + i
                     return(
-                        <div>
-                            <h3>
-                            {j}. {answers}
-                            </h3>
+                        <div className='answers'>
+                            <label className='containerclass'>
+                                <input type='radio' className='ans1' name= {optionname} value = {answer} />
+                                <h3 className='AnswerText'>
+                                    {answer}
+                                </h3>
+                            </label>
                             <hr className='AnswerHr' />
                         </div>
                     )
                 })
+
             return(
-                <div className='QuizQuestionsDiv'>
-                    <div className='Questionstexts'>
-                        <h1>
-                            {i}. {questions.questiontext} 
-                        </h1>
-                        <img className='QuestionImage' src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/CharminarView-1.jpg/1200px-CharminarView-1.jpg" alt="Capital City"></img>
-                        <div className='AnswersDiv'>
-                            {anaswersforquestion}
+                    <div className='QuizQuestionsDiv'>
+                        <div className='Questionstexts'>
+                            <h1>
+                                {i}. {questions.questiontext} 
+                            </h1>
+                            <img className='QuestionImage' src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/CharminarView-1.jpg/1200px-CharminarView-1.jpg" alt="Capital City"></img>
+                            <div className='AnswersDiv'>
+                                {anaswersforquestion}
+                            </div>
                         </div>
                     </div>
-                </div>
             )
         })}
 
@@ -61,8 +66,11 @@ const quizcomp = (props) =>
             <h3>
                 Created By: {gotquiz.createdby}
             </h3>
-            </div>   
-            {quizquestionsdiv}
+            </div>
+            <form>  
+                {quizquestionsdiv}
+                <input type= 'submit' className='submitBtn' onClick={props.formsubmitted}/>
+            </form> 
         </div>
     )
 }

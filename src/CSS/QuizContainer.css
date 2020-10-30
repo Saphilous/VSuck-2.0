@@ -60,3 +60,30 @@
     height: 2px;
     background-color: gray;
 }
+.AnswerText
+{
+    display: inline-flex;
+}
+.answers
+{
+    width: 100%;
+}
+.submitBtn
+{
+    text-align: center;
+    margin-left: 45%;
+    background-color: lightgreen;
+    font-size: xx-large;
+    font-weight: 700;
+}
+.submitBtn:hover
+{
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
+.ans1
+{
+    width: 50px;
+    height: 20px;
+}
