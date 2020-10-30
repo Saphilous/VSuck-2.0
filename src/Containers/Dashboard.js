@@ -35,7 +35,6 @@ class DashBoard extends Component
         const link = linkbase.concat(linkurl)
         this.props.history.push(link)
     }
-
     render()
     {
         return (

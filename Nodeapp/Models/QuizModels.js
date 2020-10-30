@@ -6,8 +6,6 @@ const QuizSchema = new mongoose.Schema({
     createdby: String,
     CreatedAt: Date,
     Questions: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Question'
     }]
 })
 module.exports = mongoose.model('Quiz', QuizSchema)

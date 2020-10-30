@@ -1,8 +1,5 @@
 const Class = require('../Models/ClassModels')
 
-Class.create({ClassName: 'Web Development', ClassDescription: 'Great Class!'})
-Class.create({ClassName: 'Cyber Security', ClassDescription: 'Another Great Class!'})
-
 exports.getclasses = (req, res, next) =>
 {
     Class.find().then(classes =>

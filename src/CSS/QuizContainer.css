@@ -1,0 +1,62 @@
+.MainQuizDiv
+{
+    background-image: url('https://images.unsplash.com/photo-1518655048521-f130df041f66?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+}
+.StartQuizDiv
+{
+    padding: 10%;
+}
+.QuizHeadings
+{
+    text-align: center;
+    font-size: 40px;
+    font-family: cursive;
+    margin-bottom: 2%;
+}
+.QuizQuestionsDiv
+{
+    border: 2px black;
+    border-radius: 7px;
+    border-style: solid;
+    margin: 2%;
+    box-shadow: 5px 10px gray;
+    width: 100%;
+}
+.QuestionImage
+{
+    height: 300px;
+    width: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: inline;
+    margin-bottom: 2%;
+}
+.Questionstexts
+{
+    margin-left: 2%;
+    width: 100%;
+}
+.AnswersDiv
+{
+    width: max-content;
+    margin-right: 0px;
+    padding-right: 0px;
+    display: inline-block;
+    margin-left: 15%;
+    align-self: center;
+    font-size: 20px;
+    margin-bottom: 2%;
+}
+.InlineHolder
+{
+    display: inline-block;
+}
+.AnswerHr
+{
+    height: 2px;
+    background-color: gray;
+}

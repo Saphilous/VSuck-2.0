@@ -15,6 +15,10 @@ var UserSchema = new mongoose.Schema({
     RegisteredClasses: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Class'
+    },
+    Quizzes : {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Quiz'
     }
 })
 module.exports = mongoose.model('User', UserSchema)

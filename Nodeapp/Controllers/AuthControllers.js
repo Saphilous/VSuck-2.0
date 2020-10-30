@@ -10,10 +10,7 @@ exports.getlogin = (req, res, next) =>
 }
 
 exports.postlogin = async (req,res,next) =>{
-    console.log(req.body)
     const { mail, pwd} = req.body.details
-    console.log(mail)
-    console.log(pwd)
     User.findOne({
         mailid: mail
     }).then((user)=>{
@@ -40,7 +37,6 @@ exports.postlogin = async (req,res,next) =>{
                     console.log("Fuk u! Come on in!")
                     const payload = mail
                     const token = jwt.sign(payload, secret)
-                    console.log(token)
                     res.cookie('SesToken', token, {httponly:true}).sendStatus(200)
                     console.log('cookie set succesfully')
                 }
@@ -69,7 +65,6 @@ exports.postlogin = async (req,res,next) =>{
 exports.postsignup = (req, res, next) =>
 {
     console.log('line 43 says hi-------------------------------------------------------------------------------')
-    console.log(req.body)
     const {name, mail, password} = req.body
     if(mail && password && name )
         {User.findOne({

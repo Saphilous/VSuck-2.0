@@ -5,9 +5,9 @@ const QuestionSchema = new mongoose.Schema({
     QuestionImageURL: String,
     CorrectAnswer: String,
     label: String,
-    Answers: {
+    Answers: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Answer'
-    }
+    }]
 })
 module.exports = mongoose.model('Question', QuestionSchema)

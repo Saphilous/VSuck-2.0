@@ -7,6 +7,7 @@ import Sigform from './Containers/SignupForm';
 import Logout from './Containers/Logout';
 import Community from './Containers/Community';
 import Classes from './Containers/ClassContainer';
+import QuizContainer from './Containers/Quizcontainer';
 import withAuth from './HOC/Auth/Auth';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -22,6 +23,7 @@ function App() {
               <Route path ='/Logout' component = {Logout} exact />
               <Route path='/Community' component = {withAuth(Community)} exact />
               <Route path = '/Dashboard/:id' component = {withAuth(Classes)} exact/>
+              <Route path = '/quizzes/:id' component={withAuth(QuizContainer)} exact />
             </Switch>
         </div>
     </BrowserRouter>
