@@ -51,6 +51,19 @@
     font-size: 20px;
     margin-bottom: 2%;
 }
+.disabledtruly
+{
+    width: max-content;
+    margin-right: 0px;
+    padding-right: 0px;
+    display: inline-block;
+    margin-left: 15%;
+    align-self: center;
+    font-size: 20px;
+    margin-bottom: 2%;
+    background-color: rgba(15, 17, 17, 0.603);
+    pointer-events: none;
+}
 .InlineHolder
 {
     display: inline-block;

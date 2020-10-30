@@ -7,7 +7,8 @@ import '../CSS/QuizContainer.css'
 
 class QuizContainer extends Component{
     state= {
-        foundquiz: []
+        foundquiz: [],
+        disabled : 'AnswersDiv'
     }
     componentDidMount(){
         let quizid = this.props.match.params.id
@@ -22,15 +23,21 @@ class QuizContainer extends Component{
     }
     render()
     {
-        const formsubmitted = (event) =>
+      const  formsubmitted = (event) =>
         {
             event.preventDefault()
+            console.log(event.target)
+        }
+       const answersubmitted = (event) =>
+        {
+            console.log(event.target.value)
+            this.setState({disabled: true})
         }
         console.log(this.state.foundquiz)
         return(
             <div className='MainQuizDiv'>
                 <Navbar authstate= {true}/>
-                <QuizComp passingquiz = {this.state.foundquiz} formsubmitted={formsubmitted} />
+                <QuizComp passingquiz = {this.state.foundquiz} formsubmitted={formsubmitted} answersubmitted= {answersubmitted} disabler= {this.state.disabled}/>
             </div>
         )
     }
