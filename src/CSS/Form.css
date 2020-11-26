@@ -56,3 +56,22 @@
     background-color: green;
     color: white;
 }
+.Getmarksbtn
+{
+    border-radius: 7px;
+    border: cornflowerblue 1px solid;
+    margin-top: 1%;
+    font-size: 40px;
+    margin-right: 1%;
+    font-weight: 600;
+    align-self: center;
+    margin-left: 45%;
+    font-weight: 100;
+    background-color: greenyellow;
+}
+.Getmarksbtn:hover
+{
+    cursor: pointer;
+    background-color: green;
+    color: white;
+}
