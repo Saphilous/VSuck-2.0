@@ -7,8 +7,7 @@ import '../CSS/QuizContainer.css'
 
 class QuizContainer extends Component{
     state= {
-        foundquiz: [],
-        disabled : 'AnswersDiv'
+        foundquiz: []
     }
     componentDidMount(){
         let quizid = this.props.match.params.id

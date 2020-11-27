@@ -1,22 +1,56 @@
 import { render } from '@testing-library/react'
 import React, {Component} from 'react'
 import '../CSS/QuizContainer.css'
-import { BrowserRouter, Route } from 'react-router-dom';
+import Marksshower from '../UI/marksshower'
+import Marksinfo from '../Components/MarksInfo/Marksinfo'
+import Answersshower from '../UI/answershower'
+import AnswersInfo from './AnswersInfo/Answersingo'
 
 class Quizcomp extends Component{
     state = {
-        correctanswers: [],
-        disabled: false,
-        eventvalues: [' answer', ' wrong answer']
+        eventvalues: [' answer', ' wrong answer'],
+        marks: 0,
+        marksshowing: false,
+        marksclassname: 'noneshowing',
+        formdisabler: false,
+        questions: 10,
+        classnamehandler: 'ans1',
+        answershower: false
     }
+
+    backdropdisabler = (event) =>
+    {
+        const markstempshowing = false
+        const answertempshowing = false
+        this.setState({marksshowing: markstempshowing, answershower: answertempshowing})
+    }
+
+    getmarksnow = (event) =>
+    {
+        event.preventDefault()
+        const showermarker = true
+        const marksshowdiv = 'showingDiv'
+        const formdisablerdive = true
+        this.setState({marksshowing: showermarker, marksclassname: marksshowdiv, formdisabler: formdisablerdive})
+    }
+
+    getanswernow = (event) =>
+    {
+        event.preventDefault()
+        if(this.state.formdisabler === true)
+        {
+            this.setState({answershower: true})
+        }
+    }
+    resetformnow = (event) =>
+    {
+        event.preventDefault()
+        document.getElementById('Quizform').reset()
+        this.setState({marks: 0})
+    }
+
     render()
     {
-
-        const getmarks =(event) =>
-        {
-            event.preventDefault()
-            console.log(this.props.history)
-        }
 
         let i = 0
 
@@ -35,37 +69,45 @@ class Quizcomp extends Component{
 
         const answered = (event) =>
         {
-            console.log(event.target)
             const questid = event.target.name
+            console.log('the qustion id is ' + questid)
             const questidsplit = questid.split(" ")
-            console.log(questidsplit)
             const eventvalue = ' ' + event.target.value
-            if(eventvalue === correctanswerarray[questidsplit[1]])
-            {
-                let elements = this.state.eventvalues
+            let elements = this.state.eventvalues
                 console.log(elements)
                 elements.push(eventvalue)
                 this.setState({eventvalues:elements})
+            if(eventvalue === correctanswerarray[questidsplit[1]])
+            {               
                 for (let index = 0; index < this.state.eventvalues.length; index++) {
-                    if(eventvalue !== this.state.eventvalues[index])
+                    if(eventvalue != this.state.eventvalues[index])
                     {
-                        console.log('Hurrah! That is what we were looking for mate')
+                        console.log(eventvalue !== this.state.eventvalues[index])
                         j++
                         p++
                         console.log(j)
+                        
                     }
                     else
                     {
                         console.log("get off you wanker!")
                     }
-                }                
+                }    
+                const totalmarks = j-1
+                this.setState({marks:totalmarks})        
             }
             else
             {
+                if(this.state.formdisabler)
+                {
+                    const stateclasssetter = 'wronganswer'
+                    this.setState({classnamehandler: stateclasssetter})
+                }
                 console.log('Fuk off will ya')
                 p++
             }
         }
+
     
         if(gotquizquestions)
         {
@@ -81,7 +123,7 @@ class Quizcomp extends Component{
                         const optionname = 'option ' + i
                         return(
                             <div className='answers' key = {keycomp}>
-                                    <input type='radio' className='ans1' name={optionname} value = {answer} onChange = {answered} disabled= {this.state.disabled} refid= {questionid}/>
+                                    <input type='radio' className={this.state.classnamehandler} name={optionname} value = {answer} onClick = {answered} disabled= {this.state.formdisabler} id= {questionid}/>
                                     <h3 className='AnswerText'>
                                         {answer}
                                     </h3>
@@ -109,6 +151,8 @@ class Quizcomp extends Component{
 
         return(
             <div className='StartQuizDiv'>
+                <Marksshower closeBackDrop={this.backdropdisabler} showMarks= {this.state.marksshowing}> <Marksinfo totalmarks={this.state.marks} actualmarks={this.state.questions}></Marksinfo> </Marksshower>
+                <Answersshower closeBackDrop={this.backdropdisabler} showAnswers= {this.state.answershower}><AnswersInfo correctanswerarray= {correctanswerarray}></AnswersInfo></Answersshower>
                 <div className='QuizHeadings'>
                 <h1>
                     {gotquiz.QuizName} Quiz
@@ -119,10 +163,15 @@ class Quizcomp extends Component{
                 <h3>
                     Created By: {gotquiz.createdby}
                 </h3>
+                <h3 className={this.state.marksclassname}>
+                    You scored a total of {this.state.marks}
+                </h3>
                 </div>
-                <form>
+                <form id='Quizform'>
                     {quizquestionsdiv}
-                    <input type='submit' className='Getmarksbtn' onClick={getmarks}/>
+                    <button className='ResetFormButton' onClick={this.resetformnow}>Reset</button>
+                    <input type='submit' className='Getmarksbtn' onClick={this.getmarksnow}/>
+                    <button className='GetansBtn' onClick={this.getanswernow}>Answers</button>
                 </form>                    
             </div>
         )}

@@ -18,7 +18,8 @@
 }
 .QuizQuestionsDiv
 {
-    border: 2px black;
+    border-bottom: 4px rgba(66, 0, 121, 0.959);
+    border-right: 4px rgba(66, 0, 121, 0.959);
     border-radius: 7px;
     border-style: solid;
     margin: 2%;
@@ -80,6 +81,7 @@
 .answers
 {
     width: 100%;
+    padding-right: 90;
 }
 .submitBtn
 {
@@ -99,4 +101,35 @@
 {
     width: 50px;
     height: 20px;
+}
+.noneshowing
+{
+    display: none;
+}
+.showingDiv
+{
+    display: inherit;
+}
+.showingDiv
+{
+    background-color: greenyellow;
+    color: black;
+    border-radius: 7px;
+}
+.showingDiv:hover
+{
+    background-color: green;
+    color: white;
+}
+.crctanswer
+{
+    width: 50px;
+    height: 20px;
+    background-color: rgb(92, 248, 87);
+}
+.wronganswer
+{
+    width: 50px;
+    height: 20px;
+    background-color: rgb(238, 81, 81);
 }
