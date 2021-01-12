@@ -13,10 +13,12 @@ import withAuth from './HOC/Auth/Auth';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 function App() {
-  document.addEventListener("contextmenu", (event) => {
+
+ /* document.addEventListener("contextmenu", (event) => {
     event.preventDefault();
     alert('You Can\'t use right click on this page... Unless you have a functioning human mind.. or a cute dog')
-  });
+  }); */
+  
   return (
     <BrowserRouter>
         <div className="App">

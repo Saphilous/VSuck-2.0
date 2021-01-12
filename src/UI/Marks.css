@@ -9,9 +9,8 @@
     border-radius: 7px;
     transition: all 1s ease-in-out;
     width: 50%;
-    height: 50%;
     margin: auto;
     box-shadow: 1px 1px 1px black;
     left: 25%;
-    top: 30%;
+    top: 10%;
 }

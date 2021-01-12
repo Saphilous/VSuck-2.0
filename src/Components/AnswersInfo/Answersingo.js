@@ -2,12 +2,14 @@ import React from 'react'
 
 const Answersinfo = (props) =>
 {
-   const answershower = props.correctanswerarray.map(crctanswer =>
+    var i =0
+    const answershower = props.correctanswerarray.map(crctanswer =>
         {
+            i++
             return(
                 <ol>
-                    <li>
-                        {crctanswer}
+                    <li key = {i}>
+                        {i}. {crctanswer}
                     </li>
                 </ol>
             )

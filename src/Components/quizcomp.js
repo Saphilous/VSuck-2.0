@@ -142,7 +142,7 @@ class Quizcomp extends Component{
                                 <h1>
                                     {i}. {questions.questiontext} 
                                 </h1>
-                                <img className='QuestionImage' src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/CharminarView-1.jpg/1200px-CharminarView-1.jpg" alt="Capital City"></img>
+                                <img className='QuestionImage' src={questions.questionimage} alt="Capital City"></img>
                                 <div className= 'AnswersDiv'>
                                     {anaswersforquestion}
                                 </div>
