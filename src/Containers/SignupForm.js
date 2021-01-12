@@ -29,18 +29,19 @@ class SigForm extends Component
         this.setState({name:newname})
 
     }
-    onRegister = () =>
+    onRegister = (event) =>
     {
+        event.preventDefault()
         const details = {name: this.state.name, mail: this.state.mail, password: this.state.password}
         instance.post('/signup', details).then((response) =>
             {
                 console.log('Hooooola Hoops')
-                this.setState({name:null, password:null, mail:null}).catch(err =>
-                    {
-                        console.log(err)
-                    })
+                this.setState({name:null, password:null, mail:null})
                     this.props.history.push('/Login')
-            })
+            }).catch(err =>
+                {
+                    console.log(err)
+                })
     }
 
 

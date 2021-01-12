@@ -19,6 +19,9 @@ var UserSchema = new mongoose.Schema({
     Quizzes : {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Quiz'
-    }
+    },
+    Marks : [
+        {markslist : [{quizid: {type: String}, totalmarks: {type: Number}}]}
+    ]
 })
 module.exports = mongoose.model('User', UserSchema)

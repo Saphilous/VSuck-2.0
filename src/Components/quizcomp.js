@@ -5,6 +5,8 @@ import Marksshower from '../UI/marksshower'
 import Marksinfo from '../Components/MarksInfo/Marksinfo'
 import Answersshower from '../UI/answershower'
 import AnswersInfo from './AnswersInfo/Answersingo'
+import instance from '../Axios/axios'
+import {withRouter} from 'react-router-dom'
 
 class Quizcomp extends Component{
     state = {
@@ -29,11 +31,13 @@ class Quizcomp extends Component{
 
     getmarksnow = (event) =>
     {
+        const quzid = this.props.match.params.id
+        const basequizurl = '/quizzes/'
+        const finalquizurl = basequizurl.concat(quzid)
         event.preventDefault()
         const useroptionarray = this.state.useroption
         let marksscored = 0
         const correctanswerarray = this.state.correctanswerstate
-
         for(let i=0; i<useroptionarray.length; i++)
         {
             if(useroptionarray[i] === correctanswerarray[i])
@@ -43,15 +47,16 @@ class Quizcomp extends Component{
             console.log(marksscored)
             this.setState({marks: marksscored})
         }
-
-
+        instance.post(finalquizurl, {marksscored}).then(res =>
+            {
+                console.log(res.data)
+            }
+        )
         const showermarker = true
         const marksshowdiv = 'showingDiv'
         const formdisablerdive = true
         this.setState({marksshowing: showermarker, marksclassname: marksshowdiv, formdisabler: formdisablerdive})
-        console.log(event.target)
-        console.log(event.target.previousSibling
-        )
+
     }
 
     getanswernow = (event) =>
@@ -179,4 +184,4 @@ class Quizcomp extends Component{
         )}
     }
 
-export default Quizcomp
+export default withRouter(Quizcomp)

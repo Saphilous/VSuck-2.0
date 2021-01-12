@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const cookieparser = require('cookie-parser')
 const secret = 'ManiPedifor5183$*'
+const User = require('../Models/UserModels')
 
 const withAuth = (req, res, next) =>
 {
@@ -21,7 +22,10 @@ const withAuth = (req, res, next) =>
             }
             else
             {
-                req.email = decoded.email
+                console.log('kudos son!')
+                console.log(decoded)
+                req.email = decoded
+                console.log(req.email)
                 next()
             }
         })
