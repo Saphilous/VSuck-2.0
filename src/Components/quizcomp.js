@@ -8,14 +8,16 @@ import AnswersInfo from './AnswersInfo/Answersingo'
 
 class Quizcomp extends Component{
     state = {
-        eventvalues: [' answer', ' wrong answer'],
+        eventvalues: ['answer'],
         marks: 0,
         marksshowing: false,
         marksclassname: 'noneshowing',
         formdisabler: false,
         questions: 10,
         classnamehandler: 'ans1',
-        answershower: false
+        answershower: false,
+        useroption: [],
+        correctanswerstate: []
     }
 
     backdropdisabler = (event) =>
@@ -28,11 +30,28 @@ class Quizcomp extends Component{
     getmarksnow = (event) =>
     {
         event.preventDefault()
+        const useroptionarray = this.state.useroption
+        let marksscored = 0
+        const correctanswerarray = this.state.correctanswerstate
+
+        for(let i=0; i<useroptionarray.length; i++)
+        {
+            if(useroptionarray[i] === correctanswerarray[i])
+            {
+                marksscored+=1
+            }
+            console.log(marksscored)
+            this.setState({marks: marksscored})
+        }
+
+
         const showermarker = true
         const marksshowdiv = 'showingDiv'
         const formdisablerdive = true
         this.setState({marksshowing: showermarker, marksclassname: marksshowdiv, formdisabler: formdisablerdive})
-        console.log(event.target.value)
+        console.log(event.target)
+        console.log(event.target.previousSibling
+        )
     }
 
     getanswernow = (event) =>
@@ -55,14 +74,11 @@ class Quizcomp extends Component{
 
         let i = 0
 
-        let j = 0
-
         let p = 0
     
         const gotquiz = this.props.passingquiz
     
         const gotquizquestions = gotquiz.Questions
-    
     
         let quizquestionsdiv = null
 
@@ -70,44 +86,31 @@ class Quizcomp extends Component{
 
         const answered = (event) =>
         {
-            const questid = event.target.name
-            console.log('the qustion id is ' + questid)
-            const questidsplit = questid.split(" ")
-            const eventvalue = ' ' + event.target.value
-            let elements = this.state.eventvalues
-                console.log(elements)
-                elements.push(eventvalue)
-                this.setState({eventvalues:elements})             
-                for (let index = 0; index < this.state.eventvalues.length; index++) 
-                {
-                    if(eventvalue !== this.state.eventvalues[index])
-                    {
-                        console.log('the if statement')
-                        if(eventvalue === correctanswerarray[questidsplit[1]])
-                        {
-                            j++
-                            p++
-                        }
-                        else
-                        {
-                            if(this.state.formdisabler)
-                            {
-                                const stateclasssetter = 'wronganswer'
-                                this.setState({classnamehandler: stateclasssetter})
-                            }
-                            console.log('Fuk off will ya')
-                            p++
-                        }
-                    }
-                    else
-                    {
-                        console.log("get off you wanker!")
-                    }
-                }    
-                const totalmarks = j-1
-                this.setState({marks:totalmarks})
-        }
+            this.setState({correctanswerstate: correctanswerarray})
+            let j = 0
 
+            const questid = event.target.name
+            const questidsplit = questid.split(" ")
+            const questidentifier = questidsplit[1]
+            const eventvalue = event.target.value
+            const eventvaluespaced = ' ' + eventvalue
+            console.log(questidsplit[1])
+
+            //checkkkkkkkkkz-------------------------------------------------------------------------------------
+
+            var correctanswerobject = this.state.useroption
+            correctanswerobject[questidentifier] = eventvaluespaced
+            this.setState({useroption:correctanswerobject})
+
+            //checkkkkkkkkkz-------------------------------------------------------------------------------------
+
+            if(eventvaluespaced === correctanswerarray[(questidsplit[1])])
+            {
+                console.log("yay correct answer")
+                j++
+            }
+            console.log("the total marks are", j)
+        }
     
         if(gotquizquestions)
         {
@@ -123,7 +126,7 @@ class Quizcomp extends Component{
                         const optionname = 'option ' + i
                         return(
                             <div className='answers' key = {keycomp}>
-                                    <input type='radio' className={this.state.classnamehandler} name={optionname} value = {answer} onClick = {answered} disabled= {this.state.formdisabler} id= {questionid}/>
+                                    <input type='radio' className={this.state.classnamehandler} name={optionname} value = {answer} onClick = {answered} disabled= {this.state.formdisabler} id= {optionname}/>
                                     <h3 className='AnswerText'>
                                         {answer}
                                     </h3>
