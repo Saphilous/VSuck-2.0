@@ -32,6 +32,7 @@ class Quizcomp extends Component{
         const marksshowdiv = 'showingDiv'
         const formdisablerdive = true
         this.setState({marksshowing: showermarker, marksclassname: marksshowdiv, formdisabler: formdisablerdive})
+        console.log(event.target.value)
     }
 
     getanswernow = (event) =>
@@ -76,17 +77,27 @@ class Quizcomp extends Component{
             let elements = this.state.eventvalues
                 console.log(elements)
                 elements.push(eventvalue)
-                this.setState({eventvalues:elements})
-            if(eventvalue === correctanswerarray[questidsplit[1]])
-            {               
-                for (let index = 0; index < this.state.eventvalues.length; index++) {
-                    if(eventvalue != this.state.eventvalues[index])
+                this.setState({eventvalues:elements})             
+                for (let index = 0; index < this.state.eventvalues.length; index++) 
+                {
+                    if(eventvalue !== this.state.eventvalues[index])
                     {
-                        console.log(eventvalue !== this.state.eventvalues[index])
-                        j++
-                        p++
-                        console.log(j)
-                        
+                        console.log('the if statement')
+                        if(eventvalue === correctanswerarray[questidsplit[1]])
+                        {
+                            j++
+                            p++
+                        }
+                        else
+                        {
+                            if(this.state.formdisabler)
+                            {
+                                const stateclasssetter = 'wronganswer'
+                                this.setState({classnamehandler: stateclasssetter})
+                            }
+                            console.log('Fuk off will ya')
+                            p++
+                        }
                     }
                     else
                     {
@@ -94,18 +105,7 @@ class Quizcomp extends Component{
                     }
                 }    
                 const totalmarks = j-1
-                this.setState({marks:totalmarks})        
-            }
-            else
-            {
-                if(this.state.formdisabler)
-                {
-                    const stateclasssetter = 'wronganswer'
-                    this.setState({classnamehandler: stateclasssetter})
-                }
-                console.log('Fuk off will ya')
-                p++
-            }
+                this.setState({marks:totalmarks})
         }
 
     
@@ -169,9 +169,8 @@ class Quizcomp extends Component{
                 </div>
                 <form id='Quizform'>
                     {quizquestionsdiv}
-                    <button className='ResetFormButton' onClick={this.resetformnow}>Reset</button>
                     <input type='submit' className='Getmarksbtn' onClick={this.getmarksnow}/>
-                    <button className='GetansBtn' onClick={this.getanswernow}>Answers</button>
+                    <button className='GetansBtn' onClick={this.getanswernow} disabled={!this.state.formdisabler}>Answers</button>
                 </form>                    
             </div>
         )}

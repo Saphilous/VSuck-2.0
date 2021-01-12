@@ -67,6 +67,7 @@
     align-self: center;
     font-weight: 100;
     background-color: greenyellow;
+    margin-left: 35%;
 }
 .Getmarksbtn:hover
 {
@@ -90,6 +91,13 @@
 {
     cursor: pointer;
     background-color: rgb(3, 3, 180);
+    color: white;
+}
+
+.GetansBtn:disabled
+{
+    cursor: not-allowed;
+    background-color: red;
     color: white;
 }
 .ResetFormButton
