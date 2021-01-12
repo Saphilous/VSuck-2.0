@@ -9,6 +9,9 @@ const classcomp = (props) =>
             <h1 className='ClassHeader'>
                 {classdetails.ClassName}
             </h1>
+            <h2>
+                {classdetails.Category}
+            </h2>
             <div className= 'ClassBody'>
                 <div>
                     <h3 className='ClassDescription'>

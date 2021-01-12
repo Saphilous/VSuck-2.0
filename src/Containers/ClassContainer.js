@@ -17,22 +17,28 @@ class ClassContainer extends Component
         const Baselink2 = '/quizzes/'
         const actlink = Baselink.concat(iD)
         //const actlink2 = Baselink2.concat(iD)
-        instance.get(actlink).then(res =>
+       instance.get(actlink).then(res =>
         {
-            this.setState({singleclass: res.data})
-        })
-        instance.get('/quizzes').then(res =>
+            this.setState({singleclass: res.data}, () =>
             {
-                const quizholder = []
-                for (let key in res.data)
-                {
-                    quizholder.push({
-                        ...res.data[key],
-                        id: [key]
+                const RecivedSingleClass = this.state.singleclass
+                const ClassCategory = RecivedSingleClass.Category
+                const actquizlink = Baselink2.concat(ClassCategory)
+                console.log(actquizlink)
+                instance.get(actquizlink).then(res =>
+                    {
+                        const quizholder = []
+                        for (let key in res.data)
+                        {
+                            quizholder.push({
+                                ...res.data[key],
+                                id: [key]
+                            })
+                        }
+                        this.setState({quizzes: quizholder})
                     })
-                }
-                this.setState({quizzes: quizholder})
             })
+        })
     }
     render()
     {
@@ -43,8 +49,11 @@ class ClassContainer extends Component
                 quizindividi.push(quizzestopass)
                 i+=1
                 const quizidforlink = quizzestopass._id
+                const ClassCategory = this.state.singleclass.Category + '/'
+                console.log(quizidforlink)
                 const basequizurl = '/quizzes/'
-                const quizlinkre = basequizurl.concat(quizidforlink)
+                const quizlink1 = basequizurl.concat(ClassCategory)
+                const quizlinkre = quizlink1.concat(quizidforlink)
                 console.log(quizlinkre)
                 return(
                     <li className = 'Quiz-Links-Div'>

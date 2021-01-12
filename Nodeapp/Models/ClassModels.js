@@ -17,6 +17,10 @@ const ClassSchema = new mongoose.Schema(
         ClassAssignements: {
             type: String
         },
+        Category: {
+            type: String,
+            required: true
+        }
     }
 )
 module.exports = mongoose.model('Class', ClassSchema)

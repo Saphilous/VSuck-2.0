@@ -26,6 +26,21 @@ exports.getQuizzes = (req, res, next) =>
             })
 }
 
+exports.getQuizzeswithId = (req, res, next) =>
+{
+    const quizcategory = req.params.id
+    console.log(req.params.id)
+    Quiz.find({Category: quizcategory}).then(foundquizzes =>
+        {
+            console.log(foundquizzes)
+            res.status(200).send(foundquizzes)
+        }).catch(err =>
+            {
+                console.log('You fucked up royally at line 39 in QuizControllers')
+                console.log(err)
+            })
+}
+
 exports.getsinglequiz =(req, res, next) =>
 {
     quizid = req.params.id

@@ -28,7 +28,7 @@ function App() {
               <Route path ='/Logout' component = {Logout} exact />
               <Route path='/Community' component = {withAuth(Community)} exact />
               <Route path = '/Dashboard/:id' component = {withAuth(Classes)} exact/>
-              <Route path = '/quizzes/:id' component={withAuth(QuizContainer)} exact />
+              <Route path = '/quizzes/:category/:id' component={withAuth(QuizContainer)} exact />
               <Route path = '/Results' component={withAuth(Results)} exact />
             </Switch>
         </div>

@@ -11,7 +11,8 @@ class QuizContainer extends Component{
     }
     componentDidMount(){
         let quizid = this.props.match.params.id
-        const quizbaseurl = '/quizzes/'
+        console.log(quizid)
+        const quizbaseurl = '/quizzes/Cat/'
         const finalgeturl = quizbaseurl.concat(quizid)
         console.log(finalgeturl)
         instance.get(finalgeturl).then( res =>

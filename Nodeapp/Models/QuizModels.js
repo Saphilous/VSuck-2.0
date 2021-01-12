@@ -2,8 +2,8 @@ const mongoose = require('mongoose')
 
 const QuizSchema = new mongoose.Schema({
     QuizName: String,
-    category: String,
-    createdby: String,
+    Category: String,
+    Createdby: String,
     CreatedAt: Date,
     Questions: [{
     }]
