@@ -5,7 +5,7 @@ import '../CSS/HomeCount.css'
 const homecont = (props) =>
 {
     return (
-        <div>
+        <div className = 'body-div'>
                 <div className= 'HeadDiv'>
                     <h1 className = 'HomeHead'>
                         Welcome to VSuck

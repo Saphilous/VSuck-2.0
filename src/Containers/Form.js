@@ -42,7 +42,7 @@ class Form extends Component
         if(!this.state.Auth)
         {
             return(
-                <div>
+                <div className = 'Login-Div'>
                     <Navbar authstate = {this.state.Auth}/>
                     <FormComp onSubmit= {this.onSubmit} mailchanged= {this.MailChanged} pwdchanged= {this.PassChanged}/>
                 </div>

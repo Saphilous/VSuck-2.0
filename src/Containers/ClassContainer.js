@@ -47,7 +47,7 @@ class ClassContainer extends Component
                 const quizlinkre = basequizurl.concat(quizidforlink)
                 console.log(quizlinkre)
                 return(
-                    <li>
+                    <li className = 'Quiz-Links-Div'>
                     <NavLink to={quizlinkre} className='Navli' exact>Quiz {i}</NavLink>
                     </li>
                 )

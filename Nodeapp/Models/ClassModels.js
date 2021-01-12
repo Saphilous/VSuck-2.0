@@ -16,7 +16,7 @@ const ClassSchema = new mongoose.Schema(
         },
         ClassAssignements: {
             type: String
-        }
+        },
     }
 )
 module.exports = mongoose.model('Class', ClassSchema)
