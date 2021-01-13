@@ -35,9 +35,8 @@ exports.postlogin = async (req,res,next) =>{
                 else
                 {
                     console.log("Fuk u! Come on in!")
-                    const payload = mail
-                    const token = jwt.sign(payload, secret)
-                    res.cookie('SesToken', token, {httponly:true}).sendStatus(200)
+                    const token = jwt.sign({payload: mail}, secret, { expiresIn: '1h'})
+                    res.cookie('SesToken', token, {expires: new Date(Date.now() + 180000), httponly:true, sameSite: 'strict'}).sendStatus(200)
                     console.log('cookie set succesfully')
                 }
 

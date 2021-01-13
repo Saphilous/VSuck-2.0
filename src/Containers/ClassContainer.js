@@ -3,12 +3,14 @@ import SingleClassComp from '../Components/SingleClass'
 import Navbar from '../Containers/NavCont'
 import instance from '../Axios/axios'
 import { withRouter, NavLink } from 'react-router-dom'
+import Loader from '../UI/dogloader'
 
 class ClassContainer extends Component
 {
     state = {
         singleclass : {},
-        quizzes: []
+        quizzes: [],
+        loading: true
     }
     componentDidMount()
     {
@@ -35,7 +37,7 @@ class ClassContainer extends Component
                                 id: [key]
                             })
                         }
-                        this.setState({quizzes: quizholder})
+                        this.setState({quizzes: quizholder, loading: false})
                     })
             })
         })
@@ -61,10 +63,13 @@ class ClassContainer extends Component
                     </li>
                 )
             })
-
-
-            
         const singleclasspassing = this.state.singleclass
+        if(this.state.loading === true)
+        {
+            return(
+                <Loader loading={this.state.loading}/>
+            )
+        }
         return(
             <React.Fragment>
                 <div className='ClassMainDiv'>

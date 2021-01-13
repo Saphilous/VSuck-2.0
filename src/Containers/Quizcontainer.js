@@ -4,10 +4,12 @@ import instance from '../Axios/axios'
 import QuizComp from '../Components/quizcomp'
 import Navbar from '../Containers/NavCont'
 import '../CSS/QuizContainer.css'
+import Loader from '../UI/dogloader'
 
 class QuizContainer extends Component{
     state= {
-        foundquiz: []
+        foundquiz: [],
+        loading: true
     }
     componentDidMount(){
         let quizid = this.props.match.params.id
@@ -17,7 +19,7 @@ class QuizContainer extends Component{
         console.log(finalgeturl)
         instance.get(finalgeturl).then( res =>
             {
-                this.setState({foundquiz: res.data})
+                this.setState({foundquiz: res.data, loading: false})
             }
         )
     }
@@ -34,6 +36,12 @@ class QuizContainer extends Component{
             this.setState({disabled: true})
         }
         console.log(this.state.foundquiz)
+        if(this.state.loading === true)
+        {
+            return(
+                <Loader loading={this.state.loading}/>
+            )
+        }
         return(
             <div className='MainQuizDiv'>
                 <Navbar authstate= {true}/>

@@ -3,13 +3,31 @@ import Navbar from './NavCont';
 import FormComp from '../Components/formcomp'
 import '../CSS/Form.css';
 import instance from '../Axios/axios'
+import Loader from '../UI/dogloader'
 
 class Form extends Component
 {
     state = {
         mail: null,
         password: null,
-        Auth: false
+        Auth: false,
+        showingmsg: false,
+        loading: true
+    }
+
+    componentDidMount()
+    {
+        this.setState({loading: false})
+        if(this.props.location.state)
+        {
+            if(this.props.location.state.prevpathanme === '/Signup')
+            {
+                this.setState({showingmsg: true}, ()=>
+                {
+                    console.log(this.state.showingmsg)
+                })
+            }
+        }
     }
 
     MailChanged = (event) =>
@@ -27,6 +45,7 @@ class Form extends Component
     onSubmit = async (event)=>
     {
         event.preventDefault()
+        this.setState({loading: true})
         const details = {mail: this.state.mail, pwd: this.state.password}
         console.log(details + 'This is working so far')
         const response = await instance.post('/login', {details})
@@ -38,13 +57,25 @@ class Form extends Component
 
     render()
     {
-        console.log(this.state.Auth)
+        console.log(this.props.history)
+        console.log(this.props.location)
+        if(this.state.loading === true)
+        {
+            return(
+                <Loader loading={this.state.loading}/>
+            )
+        }
         if(!this.state.Auth)
         {
             return(
-                <div className = 'Login-Div'>
-                    <Navbar authstate = {this.state.Auth}/>
-                    <FormComp onSubmit= {this.onSubmit} mailchanged= {this.MailChanged} pwdchanged= {this.PassChanged}/>
+                <div>
+                    <div className = 'Login-Div'>
+                        <div className='Signup-Flash-Div' hidden= {!this.state.showingmsg}>
+                            Sign up succesful! Please Login to Continue
+                        </div>
+                        <Navbar authstate = {this.state.Auth}/>
+                        <FormComp onSubmit= {this.onSubmit} mailchanged= {this.MailChanged} pwdchanged= {this.PassChanged}/>
+                    </div>
                 </div>
             )
         }

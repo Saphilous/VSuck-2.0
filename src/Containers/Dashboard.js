@@ -3,11 +3,13 @@ import ClassComp from '../Components/Dash/classcomp';
 import NavBar from './NavCont';
 import instance from '../Axios/axios'
 import '../CSS/Dashboard.css'
+import Loader from '../UI/dogloader'
 
 class DashBoard extends Component
 {
     state= {
-        classlist: []
+        classlist: [],
+        loading: true
     }
 
     componentDidMount()
@@ -23,7 +25,7 @@ class DashBoard extends Component
                     })
                 }
                 this.setState({
-                    classlist:classdata
+                    classlist:classdata, loading: false
                 })
             })
     }
@@ -37,6 +39,12 @@ class DashBoard extends Component
     }
     render()
     {
+        if(this.state.loading === true)
+        {
+            return(
+                <Loader loading={this.state.loading}/>
+            )
+        }
         return (
             <div className='DashboardDiv'>
                 <NavBar  authstate = {true}/>

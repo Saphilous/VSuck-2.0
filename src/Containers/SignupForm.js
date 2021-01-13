@@ -3,19 +3,24 @@ import Navbar from './NavCont';
 import SigFormComp from '../Components/SigFormComp'
 import '../CSS/Form.css';
 import instance from '../Axios/axios';
+import Loader from '../UI/dogloader'
 
 class SigForm extends Component
 {
     state = {
         name: null,
         mail: null,
-        password: null
+        password: null,
+        loading: true
+    }
+    componentDidMount()
+    {
+        this.setState({loading:false})
     }
     MailChanged = (event) =>
     {
         const newmail = event.target.value    
         this.setState({mail:newmail})
-
     }
     PwdChanged = (event) =>
     {
@@ -32,12 +37,18 @@ class SigForm extends Component
     onRegister = (event) =>
     {
         event.preventDefault()
+        this.setState({loading: true})
         const details = {name: this.state.name, mail: this.state.mail, password: this.state.password}
         instance.post('/signup', details).then((response) =>
             {
                 console.log('Hooooola Hoops')
                 this.setState({name:null, password:null, mail:null})
-                    this.props.history.push('/Login')
+                const prevpath = this.props.location.pathname
+                const location = {
+                    pathname: '/Login',
+                    state: { prevpathanme: prevpath }
+                  }
+                this.props.history.push(location)
             }).catch(err =>
                 {
                     console.log(err)
@@ -47,6 +58,11 @@ class SigForm extends Component
 
     render()
     {
+        if(this.state.loading === true)
+        {
+            return(
+            <Loader loading = {this.state.loading}/>)
+        }
         return(
             <div>
                 <Navbar />
